@@ -1,0 +1,55 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title"><?= __('Wallet') ?></h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="<?=__('Close')?>">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card bg-light mb-3">
+      <div class="card-body">
+        <h4 class="card-title"><?= __('Your balance is %d', $wallet->amount) ?></h4>
+
+        <a href="<?=$this->url('wallet', 'debit', ['id'=>$wallet->getRelation('Users')->id, 'amount'=>100])?>" class="btn btn-primary ajax">+100</a>
+        <a href="<?=$this->url('wallet', 'credit', ['id'=>$wallet->getRelation('Users')->id, 'amount'=>100])?>" class="btn btn-secondary ajax">-100</a>
+
+        <?php if (empty($transactions)) : ?>
+          <p class="card-text"><?= __('Transactions not found') ?></p>
+        <?php else: ?>
+          <div class="card-body text-dark">
+            <ul class="list-group">
+              <?php foreach ($transactions as $record) : ?>
+                <?php if ($record->type === \Application\Transactions\Table::TYPE_DEBIT) : ?>
+                  <li class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1"><i class="fa fa-plus" aria-hidden="true"></i> <?= $record->amount ?></h5>
+                      <small>
+                        <i class="fa fa-arrow-down"></i>
+                      </small>
+                    </div>
+                  </li>
+                <?php else: ?>
+                  <li class="list-group-item list-group-item-warning">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1"><i class="fa fa-minus" aria-hidden="true"></i> <?= $record->amount ?></h5>
+                      <small>
+                        <i class="fa fa-arrow-up"></i>
+                      </small>
+                    </div>
+                  </li>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer  justify-content-between">
+    <a href="<?= $this->url('wallet', 'transactions', ['transactions-filter-userId' => $this->user()->id]) ?>"
+       class="btn btn-primary">
+        <?=__('See all transactions')?>
+    </a>
+    <a href="#" class="btn btn-light" data-dismiss="modal"><?= __('Close') ?></a>
+  </div>
+</div>

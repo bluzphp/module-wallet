@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2017 Bluz Framework
+Copyright (c) 2012-2017 by Bluz PHP Team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

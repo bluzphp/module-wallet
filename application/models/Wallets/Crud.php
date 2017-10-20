@@ -1,0 +1,17 @@
+<?php
+/**
+ * @namespace
+ */
+namespace Application\Wallets;
+
+/**
+ * Class Crud
+ *
+ * @package  Application\Wallets
+ *
+ * @author   dev
+ * @created  2017-10-19 15:23:51
+ */
+class Crud extends \Bluz\Crud\Table
+{
+}
