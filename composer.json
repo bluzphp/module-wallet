@@ -1,0 +1,9 @@
+{
+  "name": "bluzphp/module-wallet",
+  "type": "bluz-module",
+  "license": "MIT",
+  "description": "bluz wallet module",
+  "require": {
+    "bluzphp/composer-plugin": "~2.1"
+  }
+}
