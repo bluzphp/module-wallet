@@ -13,7 +13,7 @@ use Bluz\Proxy\Db;
  *
  * @package  Application\Transactions
  *
- * @author   dev
+ * @author   Anton Shevchuk
  * @created  2017-10-19 15:21:59
  */
 class Table extends \Bluz\Db\Table
@@ -51,7 +51,7 @@ class Table extends \Bluz\Db\Table
      */
     public static function addDebit($userId, int $amount)
     {
-        return Db::transaction(function() use ($userId, $amount) {
+        return Db::transaction(function () use ($userId, $amount) {
             $row = self::create(['userId' => $userId, 'amount' => $amount, 'type' => self::TYPE_DEBIT]);
             $row->save();
 
@@ -70,7 +70,7 @@ class Table extends \Bluz\Db\Table
      */
     public static function addCredit($userId, int $amount)
     {
-        return Db::transaction(function() use ($userId, $amount) {
+        return Db::transaction(function () use ($userId, $amount) {
             $row = self::create(['userId' => $userId, 'amount' => $amount, 'type' => self::TYPE_CREDIT]);
             $row->save();
 
