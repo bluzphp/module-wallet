@@ -31,10 +31,15 @@ class Transactions extends AbstractMigration
         $profiles = $this->table('transactions');
         $profiles
             ->addColumn('userId', 'integer')
+            ->addColumn('userChainId', 'integer', ['null' => true])
             ->addColumn('amount', 'integer', ['default' => 0])
-            ->addColumn('type', 'enum', ['values' => ['debit', 'credit']])
+            ->addColumn('type', 'enum', ['values' => ['debit', 'credit', 'block', 'unblock']])
             ->addTimestamps('created', 'updated')
             ->addForeignKey('userId', 'users', 'id', [
+                'delete' => 'CASCADE',
+                'update' => 'CASCADE'
+            ])
+            ->addForeignKey('userChainId', 'users', 'id', [
                 'delete' => 'CASCADE',
                 'update' => 'CASCADE'
             ])

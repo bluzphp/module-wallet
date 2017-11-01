@@ -9,7 +9,7 @@ namespace Application\Transactions;
  *
  * @package  Application\Transactions
  *
- * @author   dev
+ * @author   Anton Shevchuk
  * @created  2017-10-19 15:24:01
  */
 class Crud extends \Bluz\Crud\Table

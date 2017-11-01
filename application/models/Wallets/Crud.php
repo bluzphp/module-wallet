@@ -9,7 +9,7 @@ namespace Application\Wallets;
  *
  * @package  Application\Wallets
  *
- * @author   dev
+ * @author   Anton Shevchuk
  * @created  2017-10-19 15:23:51
  */
 class Crud extends \Bluz\Crud\Table

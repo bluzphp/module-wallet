@@ -11,7 +11,7 @@ use Bluz\Grid\Source\SelectSource;
  *
  * @package  Application\Transactions
  *
- * @author   dev
+ * @author   Anton Shevchuk
  * @created  2017-10-19 15:29:44
  */
 class Grid extends \Bluz\Grid\Grid
@@ -33,7 +33,7 @@ class Grid extends \Bluz\Grid\Grid
         $this->setAdapter($adapter);
         $this->setDefaultLimit(25);
         $this->setAllowFilters(['userId', 'type']);
-        $this->setAllowOrders(['type', 'amount', 'created']);
+        $this->setAllowOrders(['id', 'type', 'amount', 'created']);
 
         return $this;
     }

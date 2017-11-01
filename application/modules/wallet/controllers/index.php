@@ -16,8 +16,6 @@ use Bluz\Proxy\Acl;
  * @privilege ViewTransactions
  *
  * @param int $id
- *
- * @return \closure
  */
 return function (int $id = null) {
     /**
@@ -28,8 +26,13 @@ return function (int $id = null) {
         $id = $this->user()->id;
     }
 
-    $transactions = TransactionsTable::select()->where('userId = ?', $id)->limit(3)->execute();
+    $wallet = WalletsTable::getWallet($id);
+    $transactions = TransactionsTable::select()
+        ->where('userId = ?', $id)
+        ->orderBy('created', 'DESC')
+        ->limit(3)
+        ->execute();
 
-    $this->assign('wallet', WalletsTable::getWallet($id));
+    $this->assign('wallet', $wallet);
     $this->assign('transactions', $transactions);
 };
