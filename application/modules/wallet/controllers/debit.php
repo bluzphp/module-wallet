@@ -7,18 +7,21 @@
  */
 namespace Application;
 
-use Application\Transactions\Table;
+use Application\Wallets\Table;
 use Bluz\Controller\Controller;
 
 /**
  * @param int $id
  * @param int $amount
  *
+ * @throws Exception
  * @privilege Management
  */
 return function (int $id, int $amount) {
     /**
      * @var Controller $this
      */
-    Table::addDebit($id, $amount);
+    if (!Table::addDebit($id, $amount)) {
+        throw new Exception('System can\'t added debit');
+    }
 };

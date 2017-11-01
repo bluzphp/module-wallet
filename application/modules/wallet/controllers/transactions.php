@@ -11,14 +11,13 @@
  */
 namespace Application;
 
+use Application\Wallets\Table;
 use Bluz\Controller\Controller;
 use Bluz\Grid\Grid;
 use Bluz\Proxy\Acl;
 
 /**
  * @privilege ViewTransactions
- *
- * @return mixed
  */
 return function () {
     /**
@@ -27,7 +26,7 @@ return function () {
     $grid = new Transactions\Grid();
 
     if (!Acl::isAllowed('wallet', 'Management')) {
-        // if you don't have permissions you can see transactions only you
+        // if you don't have permissions you can see only your transactions
         $grid->addFilter('userId', Grid::FILTER_EQ, $this->user()->id);
     }
 
