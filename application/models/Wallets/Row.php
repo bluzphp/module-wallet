@@ -11,10 +11,11 @@ namespace Application\Wallets;
  *
  * @property integer $userId
  * @property integer $amount
+ * @property integer $blocked
  * @property string $created
  * @property string $updated
  *
- * @author   dev
+ * @author   Anton Shevchuk
  * @created  2017-10-19 15:21:27
  */
 class Row extends \Bluz\Db\Row

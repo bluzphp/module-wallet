@@ -11,7 +11,7 @@ use Bluz\Grid\Source\SelectSource;
  *
  * @package  Application\Wallets
  *
- * @author   dev
+ * @author   Anton Shevchuk
  * @created  2017-10-20 09:56:24
  */
 class Grid extends \Bluz\Grid\Grid

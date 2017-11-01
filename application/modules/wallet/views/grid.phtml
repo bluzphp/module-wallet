@@ -33,6 +33,7 @@ $uid = $grid->getUid();
     <tr>
       <th><?=__('User')?></th>
       <th width="180px"><a href="<?=$grid->order('amount')?>"><?=__('Balance')?></a></th>
+      <th width="320px"></th>
       <th width="180px"><a href="<?=$grid->order('created')?>"><?=__('Created')?></a></th>
       <th width="120px"></th>
     </tr>
@@ -42,6 +43,15 @@ $uid = $grid->getUid();
       <tr>
         <td><a href="<?=$this->url('users', 'profile', ['id' => $user->id])?>"><?= $user->login ?></a></td>
         <td><?= $row->amount ?></td>
+        <td>
+          <form action="<?= $this->url('wallet', 'send') ?>" class="ajax form-inline" method="post">
+            <input type="hidden" name="id" value="<?=$user->id?>" />
+            <label>
+              <input name="amount" value="0" class="form-control" />
+            </label>
+            <button type="submit" class="btn btn-primary"><?=__('Send')?></button>
+          </form>
+        </td>
         <td><?= $row->created ?></td>
         <td class="controls">
           <a href="<?= $this->url('users', 'profile', ['id' => $user->id]); ?>" class="btn btn-info dialog"

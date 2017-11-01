@@ -32,6 +32,7 @@ class Wallets extends AbstractMigration
         $profiles
             ->addColumn('userId', 'integer')
             ->addColumn('amount', 'integer', ['default' => 0])
+            ->addColumn('blocked', 'integer', ['default' => 0])
             ->addTimestamps('created', 'updated')
             ->addForeignKey('userId', 'users', 'id', [
                 'delete' => 'CASCADE',
