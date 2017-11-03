@@ -15,8 +15,12 @@
         </p>
         <?php endif; ?>
 
-        <a href="<?=$this->url('wallet', 'debit', ['id'=>$wallet->getRelation('Users')->id, 'amount'=>100])?>" class="btn btn-primary ajax">+100</a>
-        <a href="<?=$this->url('wallet', 'credit', ['id'=>$wallet->getRelation('Users')->id, 'amount'=>100])?>" class="btn btn-secondary ajax">-100</a>
+        <a href="<?=$this->url('wallet', 'debit', ['id'=>$wallet->getRelation('Users')->id, 'amount'=>100])?>"
+           class="btn btn-primary"
+           data-ajax>+100</a>
+        <a href="<?=$this->url('wallet', 'credit', ['id'=>$wallet->getRelation('Users')->id, 'amount'=>100])?>"
+           class="btn btn-secondary"
+           data-ajax>-100</a>
 
         <?php if (empty($transactions)) : ?>
           <p class="card-text"><?= __('Transactions not found') ?></p>
