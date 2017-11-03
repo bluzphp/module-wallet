@@ -16,15 +16,18 @@ use \Application\Transactions\Table;
   </script>
   <nav class="navbar navbar-light bg-light justify-content-start">
       <a href="<?= $grid->filter('type', 'eq', '', false) ?>"
-         class="btn btn-secondary ajax <?= (null === $grid->getFilter('type', 'eq') ? 'btn-info' : '') ?>">
+         class="btn btn-secondary <?= (null === $grid->getFilter('type', 'eq') ? 'btn-info' : '') ?>"
+         data-ajax>
           <?= __('All') ?>
       </a>
       <a href="<?= $grid->filter('type', 'eq', Table::TYPE_DEBIT, false) ?>"
-         class="ml-2 btn btn-secondary ajax <?= (Table::TYPE_DEBIT === $grid->getFilter('type', 'eq') ? 'btn-info' : '') ?>">
+         class="ml-2 btn btn-secondary <?= (Table::TYPE_DEBIT === $grid->getFilter('type', 'eq') ? 'btn-info' : '') ?>"
+         data-ajax>
           <?= __('Debit') ?>
       </a>
       <a href="<?= $grid->filter('type', 'eq', Table::TYPE_CREDIT, false) ?>"
-         class="ml-2 btn btn-secondary ajax <?= (Table::TYPE_CREDIT === $grid->getFilter('type', 'eq') ? 'btn-info' : '') ?>">
+         class="ml-2 btn btn-secondary <?= (Table::TYPE_CREDIT === $grid->getFilter('type', 'eq') ? 'btn-info' : '') ?>"
+         data-ajax>
           <?= __('Credit') ?>
       </a>
   </nav>
@@ -61,7 +64,7 @@ use \Application\Transactions\Table;
         <td><?= $row->amount ?></td>
         <td>
           <?php if ($user = $row->getChainUser()) : ?>
-            <a href="<?= $this->url('users', 'profile', ['id' => $user->id]); ?>" class="btn btn-info dialog"
+            <a href="<?= $this->url('users', 'profile', ['id' => $user->id]); ?>" class="btn btn-info" data-ajax-dialog
                data-ajax-method="get" data-modal-style="modal-lg">
               <i class="fa fa-id-card"></i> <?=$user->login?>
             </a>
