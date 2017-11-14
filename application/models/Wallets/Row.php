@@ -23,14 +23,14 @@ class Row extends \Bluz\Db\Row
     /**
      * @return void
      */
-    public function beforeInsert()
+    public function beforeInsert() : void
     {
     }
 
     /**
      * @return void
      */
-    public function beforeUpdate()
+    public function beforeUpdate() : void
     {
     }
 }
