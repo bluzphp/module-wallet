@@ -22,9 +22,9 @@ class Grid extends \Bluz\Grid\Grid
     protected $uid = 'transactions';
 
     /**
-     * @return self
+     * @return void
      */
-    public function init()
+    public function init() : void
     {
         // Current table as source of grid
         $adapter = new SelectSource();
@@ -34,7 +34,5 @@ class Grid extends \Bluz\Grid\Grid
         $this->setDefaultLimit(25);
         $this->setAllowFilters(['userId', 'type']);
         $this->setAllowOrders(['id', 'type', 'amount', 'created']);
-
-        return $this;
     }
 }
