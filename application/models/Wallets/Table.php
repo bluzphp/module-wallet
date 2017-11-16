@@ -135,7 +135,7 @@ class Table extends \Bluz\Db\Table
      * @throws \Application\Wallets\Exceptions\InsufficientFundsException
      */
     public static function addBlock(int $userId, int $amount) : bool
-{
+    {
         $wallet = self::getWallet($userId);
         if ($wallet->amount - $wallet->blocked < $amount) {
             throw new InsufficientFundsException;
