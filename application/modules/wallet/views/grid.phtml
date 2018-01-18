@@ -53,7 +53,7 @@ $uid = $grid->getUid();
           </form>
         </td>
         <td><?= $row->created ?></td>
-        <td class="controls">
+        <td class="controls d-flex justify-content-around">
           <a href="<?= $this->url('users', 'profile', ['id' => $user->id]); ?>" class="btn btn-info"
              data-ajax-dialog data-ajax-method="get" data-modal-style="modal-lg">
             <i class="fa fa-id-card"></i>

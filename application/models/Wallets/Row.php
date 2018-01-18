@@ -33,4 +33,14 @@ class Row extends \Bluz\Db\Row
     public function beforeUpdate() : void
     {
     }
+
+    /**
+     * getAvailable
+     *
+     * @return int
+     */
+    public function getAvailable()
+    {
+        return $this->amount - $this->blocked;
+    }
 }
