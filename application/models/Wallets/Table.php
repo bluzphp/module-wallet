@@ -48,6 +48,7 @@ class Table extends \Bluz\Db\Table
      * @param int $userId
      *
      * @return \Application\Wallets\Row
+     * @throws \Bluz\Db\Exception\DbException
      */
     public static function getWallet(int $userId)
     {
@@ -98,7 +99,6 @@ class Table extends \Bluz\Db\Table
      * @param int $amount
      *
      * @return \Application\Wallets\Row|bool
-     * @throws \Application\Wallets\Exceptions\InsufficientFundsException
      */
     public static function addCredit(int $userId, int $amount)
     {
@@ -132,7 +132,11 @@ class Table extends \Bluz\Db\Table
      * @param int $amount
      *
      * @return bool
-     * @throws \Application\Wallets\Exceptions\InsufficientFundsException
+     * @throws InsufficientFundsException
+     * @throws \Bluz\Common\Exception\ConfigurationException
+     * @throws \Bluz\Db\Exception\DbException
+     * @throws \Bluz\Db\Exception\InvalidPrimaryKeyException
+     * @throws \Bluz\Db\Exception\TableNotFoundException
      */
     public static function addBlock(int $userId, int $amount) : bool
     {
@@ -161,6 +165,10 @@ class Table extends \Bluz\Db\Table
      * @param int $amount
      *
      * @return bool
+     * @throws \Bluz\Common\Exception\ConfigurationException
+     * @throws \Bluz\Db\Exception\DbException
+     * @throws \Bluz\Db\Exception\InvalidPrimaryKeyException
+     * @throws \Bluz\Db\Exception\TableNotFoundException
      */
     public static function removeBlock(int $userId, int $amount) : bool
     {
@@ -192,8 +200,9 @@ class Table extends \Bluz\Db\Table
      * @param int $amount
      *
      * @return \Application\Wallets\Row|bool
-     * @throws WalletsException
      * @throws InsufficientFundsException
+     * @throws WalletsException
+     * @throws \Bluz\Db\Exception\DbException
      */
     public static function send(int $fromUserId, int $toUserId, int $amount)
     {

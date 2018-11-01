@@ -15,11 +15,11 @@ $uid = $grid->getUid();
 
   <nav class="navbar navbar-light bg-light justify-content-start">
     <a href="<?= $grid->filter('amount', 'eq', '', true) ?>"
-       class="btn btn-secondary <?= (null === $grid->getFilter('amount', 'eq') ? 'btn-info' : '') ?>" data-ajax>
+       class="btn <?= (null === $grid->getFilter('amount', 'eq') ? 'btn-info' : 'btn-secondary') ?>" data-ajax>
         <?= __('All') ?>
     </a>
     <a href="<?= $grid->filter('amount', 'eq', 0, false) ?>"
-       class="ml-2 btn btn-secondary <?= (0 === $grid->getFilter('amount', 'eq') ? 'btn-info' : '') ?>" data-ajax>
+       class="ml-2 btn <?= (0 === $grid->getFilter('amount', 'eq') ? 'btn-info' : 'btn-secondary') ?>" data-ajax>
         <?= __('Zero') ?>
     </a>
   </nav>
@@ -53,7 +53,7 @@ $uid = $grid->getUid();
           </form>
         </td>
         <td><?= $row->created ?></td>
-        <td class="controls">
+        <td class="controls d-flex justify-content-around">
           <a href="<?= $this->url('users', 'profile', ['id' => $user->id]); ?>" class="btn btn-info"
              data-ajax-dialog data-ajax-method="get" data-modal-style="modal-lg">
             <i class="fa fa-id-card"></i>
