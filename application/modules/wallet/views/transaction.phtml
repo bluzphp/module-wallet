@@ -1,0 +1,20 @@
+<div class="card bg-light">
+    <div class="card-header">
+        <h3 class="d-flex w-100 justify-content-between">
+            <?= ucfirst($transaction->type) ?>
+        </h3>
+    </div>
+    <div class="card-body text-dark">
+        <ul class="list-group">
+            <li class="list-group-item d-flex w-100 justify-content-between">
+                <span><?= __('Amount') ?></span>
+                <strong><?= $transaction->getAmount() ?></strong>
+            </li>
+            <li class="list-group-item d-flex w-100 justify-content-between">
+                <span><?= __('Date') ?></span>
+                <strong><?= $transaction->created ?></strong>
+            </li>
+        </ul>
+    </div>
+</div>
+
