@@ -11,24 +11,23 @@
  */
 namespace Application;
 
-use Application\Wallets\Table;
 use Bluz\Controller\Controller;
-use Bluz\Grid\Grid;
-use Bluz\Proxy\Acl;
+use Bluz\Proxy\Layout;
 
 /**
- * @privilege ViewTransactions
+ * @privilege Management
  */
 return function () {
     /**
      * @var Controller $this
      */
+    Layout::setTemplate('dashboard.phtml');
+    Layout::breadCrumbs(
+        [
+            Layout::ahref('Dashboard', ['dashboard', 'index']),
+            __('Transactions')
+        ]
+    );
     $grid = new Transactions\Grid();
-
-    if (!Acl::isAllowed('wallet', 'Management')) {
-        // if you don't have permissions you can see only your transactions
-        $grid->addFilter('userId', Grid::FILTER_EQ, $this->user()->id);
-    }
-
     $this->assign('grid', $grid);
 };

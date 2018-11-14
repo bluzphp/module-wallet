@@ -22,6 +22,7 @@ use Bluz\Proxy\Router;
  * @method POST
  * @throws Exception
  * @privilege Management
+ * @throws \Bluz\Http\Exception\RedirectException
  */
 return function (int $id, int $amount) {
     /**

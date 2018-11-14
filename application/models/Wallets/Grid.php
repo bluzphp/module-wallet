@@ -23,16 +23,23 @@ class Grid extends \Bluz\Grid\Grid
 
     /**
      * @return void
+     * @throws \Bluz\Grid\GridException
      */
     public function init() : void
     {
         // Current table as source of grid
         $adapter = new SelectSource();
-        $adapter->setSource(Table::select());
+        $adapter->setSource(
+            Table::select()
+                ->addSelect('users.login as login')
+                ->join('wallets', 'users', 'users', 'users.id = wallets.userId')
+        );
 
+        $this->addAlias('users.id', 'user');
+        $this->addAlias('users.login', 'login');
         $this->setAdapter($adapter);
         $this->setDefaultLimit(25);
-        $this->setAllowFilters(['amount']);
-        $this->setAllowOrders(['amount', 'created']);
+        $this->setAllowFilters(['amount', 'blocked', 'users.id', 'users.login']);
+        $this->setAllowOrders(['amount', 'blocked', 'users.id', 'users.login', 'created']);
     }
 }
