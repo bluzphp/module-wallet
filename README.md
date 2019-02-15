@@ -1,13 +1,19 @@
 # Module Wallet for Bluz Skeleton
+## Achievements
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/bluzphp/main)
+[![PHP >= 7.1+](https://img.shields.io/packagist/php-v/bluzphp/module-wallet.svg?style=flat)](https://php.net/)
 
-### Achievements
+[![Latest Stable Version](https://img.shields.io/packagist/v/bluzphp/module-wallet.svg?label=version&style=flat)](https://packagist.org/packages/bluzphp/module-wallet)
 
-[![License](https://poser.pugx.org/bluzphp/module-wallet/license)](https://packagist.org/packages/bluzphp/module-wallet)
+[![Build Status](https://img.shields.io/travis/bluzphp/module-wallet/master.svg?style=flat)](https://travis-ci.org/bluzphp/module-wallet)
 
-Usage
--------------------------
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/bluzphp/module-wallet.svg?style=flat)](https://scrutinizer-ci.com/g/bluzphp/module-wallet/)
+
+[![Total Downloads](https://img.shields.io/packagist/dt/bluzphp/module-wallet.svg?style=flat)](https://packagist.org/packages/bluzphp/module-wallet)
+
+[![License](https://img.shields.io/packagist/l/bluzphp/module-wallet.svg?style=flat)](https://packagist.org/packages/bluzphp/module-wallet)
+
+## Usage
 ### Install module
 To install the module run the command:
   
