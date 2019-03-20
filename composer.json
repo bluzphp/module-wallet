@@ -4,6 +4,7 @@
   "license": "MIT",
   "description": "bluz wallet module",
   "require": {
+    "bluzphp/framework": "~7.11",
     "bluzphp/composer-plugin": "~2.1"
   }
 }

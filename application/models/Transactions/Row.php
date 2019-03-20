@@ -11,7 +11,6 @@ namespace Application\Transactions;
  *
  * @property integer $id
  * @property integer $userId
- * @property integer $userChainId
  * @property integer $amount
  * @property string $type
  * @property string $created
@@ -39,23 +38,41 @@ class Row extends \Bluz\Db\Row
     /**
      * getUser
      *
-     * @return \Application\Users\Row|false
+     * @return \Application\Users\Row|null
+     * @throws \Bluz\Db\Exception\RelationNotFoundException
+     * @throws \Bluz\Db\Exception\TableNotFoundException
      */
-    public function getUser()
+    public function getUser() : ?\Application\Users\Row
     {
         return $this->getRelation('Users');
     }
 
     /**
-     * getChainUser
+     * getAmount
      *
-     * @return \Application\Users\Row|false
+     * @return string
      */
-    public function getChainUser()
+    public function getAmount()
     {
-        if (!$this->userChainId) {
-            return false;
+        // switch statement for $transaction->type
+        switch ($this->type) {
+            case Table::TYPE_CREDIT:
+                $prefix = '-';
+                break;
+            case Table::TYPE_DEBIT:
+                $prefix = '+';
+                break;
+            case Table::TYPE_BLOCK:
+                $prefix = '<<';
+                break;
+            case Table::TYPE_UNBLOCK:
+                $prefix = '>>';
+                break;
+            default:
+                $prefix = '';
+                break;
         }
-        return \Application\Users\Table::findRow($this->userChainId);
+
+        return $prefix . $this->amount;
     }
 }
