@@ -48,6 +48,5 @@ class Grid extends \Bluz\Grid\Grid
         $this->setAllowFilters(['users.id', 'type']);
         $this->setAllowOrders(['transactions.id', 'type', 'amount', 'created', 'users.login']);
         $this->setDefaultOrder('transactions.id', self::ORDER_DESC);
-
     }
 }
