@@ -18,12 +18,12 @@ class WalletsPermissions extends AbstractMigration
             [
                 'roleId' => 2,
                 'module' => 'wallet',
-                'privilege' => 'ViewTransactions'
+                'privilege' => 'View'
             ],
             [
                 'roleId' => 3,
                 'module' => 'wallet',
-                'privilege' => 'ViewTransactions'
+                'privilege' => 'View'
             ],
         ];
 

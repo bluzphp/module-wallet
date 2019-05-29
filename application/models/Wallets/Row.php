@@ -1,6 +1,7 @@
 <?php
 /**
- * @namespace
+ * @copyright Bluz PHP Team
+ * @link      https://github.com/bluzphp/skeleton
  */
 namespace Application\Wallets;
 

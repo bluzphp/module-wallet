@@ -67,11 +67,7 @@ $uid = $grid->getUid();
         </td>
         <td><?= $row->created ?></td>
         <td class="controls d-flex justify-content-around">
-          <a href="<?= $this->url('users', 'profile', ['id' => $user->id]); ?>" class="btn btn-info"
-             data-ajax-dialog data-ajax-method="get" data-modal-style="modal-lg">
-            <i class="fa fa-id-card"></i>
-          </a>
-          <a href="<?=$this->url('wallet', 'transactions', ['transactions-filter-userId' => $user->id])?>" class="btn btn-warning">
+          <a href="<?=$this->url('wallet', 'transactions', ['transactions-filter-user' => $user->id])?>" class="btn btn-warning">
             <i class="fas fa-exchange-alt"></i>
           </a>
         </td>

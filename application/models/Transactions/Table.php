@@ -1,6 +1,7 @@
 <?php
 /**
- * @namespace
+ * @copyright Bluz PHP Team
+ * @link      https://github.com/bluzphp/skeleton
  */
 namespace Application\Transactions;
 
@@ -63,8 +64,6 @@ class Table extends \Bluz\Db\Table
     public static function getInfo($id) : ?Row
     {
         $select = self::select()
-            ->addSelect('p.id AS paymentId', 'p.amount AS money', 'p.currency')
-            ->leftJoin('transactions', 'payments', 'p', 'p.transactionId = transactions.id')
             ->where('transactions.id = ?', [$id]);
 
         return current($select->execute(Row::class));

@@ -40,8 +40,8 @@ use \Application\Transactions\Table;
     <tr>
       <th width="60px" class="text-center"><a href="<?= $grid->order('transactions.id') ?: '#' ?>"><?= __('Id') ?></a></th>
       <th width="180px"><a href="<?= $grid->order('users.login') ?>"><?= __('User') ?></a></th>
+      <th width="180px"><a href="<?= $grid->order('usersChain.login') ?>"><?= __('Chain') ?></a></th>
       <th width="100px"><a href="<?= $grid->order('amount') ?>"><?= __('Amount') ?></a></th>
-      <th width="60px"></th>
       <th></th>
       <th width="200px" class="d-none d-lg-table-cell"><a href="<?= $grid->order('created') ?>"><?= __('Created') ?></a></th>
     </tr>
@@ -56,35 +56,19 @@ use \Application\Transactions\Table;
               <?= $row->login ?>
           </a>
         </td>
+        <td>
+          <?php if ($row->chainUserId): ?>
+          <a href="<?=$this->url('users', 'profile', ['id' => $row->chainUserId])?>"
+             data-ajax-dialog data-ajax-method="get" data-modal-style="modal-lg">
+              <?= $row->chainLogin ?>
+          </a>
+          <?php endif; ?>
+        </td>
         <td class="text-right ">
-          <?= $row->getAmount() ?>
+          <?= $row->getAmountString() ?>
         </td>
         <td class="controls text-center ">
-          <?php if ($row['carName']) : ?>
-            <a href="<?= $this->url('cars', 'info', ['id' => $row['carId']]) ?>" class="btn btn-success"
-             data-ajax-dialog data-ajax-method="get">
-              <i class="fa fa-car"></i>
-            </a>
-          </td>
-          <td><?= $row['carName'] ?>
-          <?php elseif ($row['chargeName']) : ?>
-            <a href="<?= $this->url('charges', 'info', ['id' => $row['chargeId']]) ?>" class="btn btn-light"
-             data-ajax-dialog data-ajax-method="get">
-              <i class="fa fa-battery"></i>
-            </a>
-          </td>
-          <td><?= $row['chargeName'] ?>
-          <?php elseif ($row['money']) : ?>
-            <a href="<?= $this->url('payments', 'info', ['id' => $row['paymentId']]) ?>" class="btn btn-info"
-              data-ajax-dialog data-ajax-method="get">
-              <i class="fa fa-dollar"></i>
-            </a>
-          </td>
-          <td><?= $row['money'] ?> <?= $row['currency'] ?>
-          <?php else: ?>
-          </td>
-          <td>
-          <?php endif; ?>
+
         </td>
         <td class="d-none d-lg-table-cell"><?= $row->created ?></td>
       </tr>

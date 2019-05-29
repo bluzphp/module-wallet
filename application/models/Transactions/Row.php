@@ -1,8 +1,12 @@
 <?php
 /**
- * @namespace
+ * @copyright Bluz PHP Team
+ * @link      https://github.com/bluzphp/skeleton
  */
 namespace Application\Transactions;
+
+use Bluz\Db\Exception\RelationNotFoundException;
+use Bluz\Db\Exception\TableNotFoundException;
 
 /**
  * Class Row for `transactions`
@@ -11,6 +15,7 @@ namespace Application\Transactions;
  *
  * @property integer $id
  * @property integer $userId
+ * @property integer $chainUserId
  * @property integer $amount
  * @property string $type
  * @property string $created
@@ -39,8 +44,8 @@ class Row extends \Bluz\Db\Row
      * getUser
      *
      * @return \Application\Users\Row|null
-     * @throws \Bluz\Db\Exception\RelationNotFoundException
-     * @throws \Bluz\Db\Exception\TableNotFoundException
+     * @throws RelationNotFoundException
+     * @throws TableNotFoundException
      */
     public function getUser() : ?\Application\Users\Row
     {
@@ -48,11 +53,11 @@ class Row extends \Bluz\Db\Row
     }
 
     /**
-     * getAmount
+     * Get amount as string
      *
      * @return string
      */
-    public function getAmount()
+    public function getAmountString(): string
     {
         // switch statement for $transaction->type
         switch ($this->type) {
