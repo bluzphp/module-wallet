@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Grid controller for Transactions model
  *

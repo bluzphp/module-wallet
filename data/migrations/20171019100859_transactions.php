@@ -46,6 +46,5 @@ class Transactions extends AbstractMigration
                 'update' => 'CASCADE'
             ])
             ->create();
-
     }
 }

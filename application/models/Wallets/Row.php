@@ -1,8 +1,10 @@
 <?php
+
 /**
  * @copyright Bluz PHP Team
  * @link      https://github.com/bluzphp/skeleton
  */
+
 namespace Application\Wallets;
 
 /**
@@ -24,14 +26,14 @@ class Row extends \Bluz\Db\Row
     /**
      * @return void
      */
-    public function beforeInsert() : void
+    public function beforeInsert(): void
     {
     }
 
     /**
      * @return void
      */
-    public function beforeUpdate() : void
+    public function beforeUpdate(): void
     {
     }
 

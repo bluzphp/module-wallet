@@ -1,8 +1,10 @@
 <?php
+
 /**
  * @copyright Bluz PHP Team
  * @link      https://github.com/bluzphp/skeleton
  */
+
 namespace Application\Transactions;
 
 use Bluz\Db\Exception\RelationNotFoundException;
@@ -29,14 +31,14 @@ class Row extends \Bluz\Db\Row
     /**
      * @return void
      */
-    public function beforeInsert() : void
+    public function beforeInsert(): void
     {
     }
 
     /**
      * @return void
      */
-    public function beforeUpdate() : void
+    public function beforeUpdate(): void
     {
     }
 
@@ -47,7 +49,7 @@ class Row extends \Bluz\Db\Row
      * @throws RelationNotFoundException
      * @throws TableNotFoundException
      */
-    public function getUser() : ?\Application\Users\Row
+    public function getUser(): ?\Application\Users\Row
     {
         return $this->getRelation('Users');
     }

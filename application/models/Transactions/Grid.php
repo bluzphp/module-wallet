@@ -1,8 +1,10 @@
 <?php
+
 /**
  * @copyright Bluz PHP Team
  * @link      https://github.com/bluzphp/skeleton
  */
+
 namespace Application\Transactions;
 
 use Bluz\Grid\Source\SelectSource;
@@ -26,7 +28,7 @@ class Grid extends \Bluz\Grid\Grid
      * @return void
      * @throws \Bluz\Grid\GridException
      */
-    public function init() : void
+    public function init(): void
     {
         // Build select
         $select = Table::select()

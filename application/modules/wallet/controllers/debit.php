@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Generated controller
  *
  * @author   dev
  * @created  2017-10-19 15:32:57
  */
+
 namespace Application;
 
 use Application\Wallets\Service;

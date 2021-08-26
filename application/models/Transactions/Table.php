@@ -1,11 +1,13 @@
 <?php
+
 /**
  * @copyright Bluz PHP Team
  * @link      https://github.com/bluzphp/skeleton
  */
+
 namespace Application\Transactions;
 
-use \Application\Transactions\Row;
+use Application\Transactions\Row;
 use Application\Wallets\Table as WalletsTable;
 use Bluz\Proxy\Db;
 
@@ -49,7 +51,7 @@ class Table extends \Bluz\Db\Table
      *
      * @return void
      */
-    public function init() : void
+    public function init(): void
     {
         $this->linkTo('userId', 'Users', 'id');
     }
@@ -61,7 +63,7 @@ class Table extends \Bluz\Db\Table
      *
      * @return Row
      */
-    public static function getInfo($id) : ?Row
+    public static function getInfo($id): ?Row
     {
         $select = self::select()
             ->where('transactions.id = ?', [$id]);

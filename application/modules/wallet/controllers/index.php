@@ -1,41 +1,33 @@
 <?php
+
 /**
  * Generated controller
  *
  * @author   dev
  * @created  2017-10-19 17:44:10
  */
+
 namespace Application;
 
-use Application\Wallets\Table;
 use Bluz\Controller\Controller;
-use Bluz\Http\Exception\NotFoundException;
+use Bluz\Grid\Grid;
 use Bluz\Proxy\Layout;
 
 /**
  * @privilege View
  *
  * @param int $id
+ *
+ * @throws \Bluz\Grid\GridException
+ * @throws \Bluz\Common\Exception\CommonException
  */
 return function (int $id = null) {
     /**
      * @var Controller $this
      */
-    Layout::title(__('Wallet'));
+    $grid = new Transactions\Grid();
+    $grid->addFilter('users.id', Grid::FILTER_EQ, $this->user()->getId());
 
-    // try to load profile of current user
-    if (!$id && $this->user()) {
-        $id = $this->user()->getId();
-    }
-
-    /**
-     * @var Users\Row $user
-     */
-    $user = Users\Table::findRow($id);
-
-    if (!$user) {
-        throw new NotFoundException('User not found');
-    }
-    $this->assign('user', $user);
-    $this->assign('wallet', Table::getWallet($id));
+    $this->assign('grid', $grid);
+    $this->assign('user', $this->user());
 };

@@ -1,12 +1,11 @@
 language: php
 php:
-  - 7.1
-  - 7.2
   - 7.3
-  - master
+  - 7.4
+  - 8.0
 matrix:
   allow_failures:
-    - php: master
+    - php: 8.0
 env:
   - BLUZ_MODULE=wallet
 before_install:
@@ -26,7 +25,7 @@ before_script:
   - php vendor/bin/bluzman db:seed:run
 script:
   # Check code style
-  - php vendor/bin/phpcs ./application --standard=PSR1,PSR2 --encoding=utf-8 --ignore=./application/_loader.php
+  - php vendor/bin/phpcs ./application --standard=PSR12 --encoding=utf-8 --ignore=./application/_loader.php
   # Run built-in web-server
   - php vendor/bin/bluzman server:start --host 127.0.0.1 -b -e testing
   # Run CodeCeption tests
