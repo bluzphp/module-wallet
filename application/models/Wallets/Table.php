@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @namespace
  */
+
 namespace Application\Wallets;
 
 use Application\Loads\Table as LoadsTable;
@@ -47,7 +49,7 @@ class Table extends \Bluz\Db\Table
      *
      * @return void
      */
-    public function init() : void
+    public function init(): void
     {
         $this->linkTo('userId', 'Users', 'id');
     }
@@ -153,7 +155,7 @@ class Table extends \Bluz\Db\Table
 
             $wallet = self::getWallet($userId);
             if ($wallet->amount - $wallet->blocked < $amount) {
-                throw new InsufficientFundsException;
+                throw new InsufficientFundsException();
             }
 
             $row = TransactionsTable::create(
@@ -185,11 +187,11 @@ class Table extends \Bluz\Db\Table
      * @throws \Bluz\Db\Exception\InvalidPrimaryKeyException
      * @throws \Bluz\Db\Exception\TableNotFoundException
      */
-    public static function addBlock(int $userId, int $amount) : bool
+    public static function addBlock(int $userId, int $amount): bool
     {
         $wallet = self::getWallet($userId);
         if ($wallet->amount - $wallet->blocked < $amount) {
-            throw new InsufficientFundsException;
+            throw new InsufficientFundsException();
         }
 
         $row = TransactionsTable::create(
@@ -217,7 +219,7 @@ class Table extends \Bluz\Db\Table
      * @throws \Bluz\Db\Exception\InvalidPrimaryKeyException
      * @throws \Bluz\Db\Exception\TableNotFoundException
      */
-    public static function removeBlock(int $userId, int $amount) : bool
+    public static function removeBlock(int $userId, int $amount): bool
     {
         $wallet = self::getWallet($userId);
 
@@ -260,7 +262,7 @@ class Table extends \Bluz\Db\Table
         $fromWallet = self::getWallet($fromUserId);
 
         if ($fromWallet->amount - $fromWallet->blocked < $amount) {
-            throw new InsufficientFundsException;
+            throw new InsufficientFundsException();
         }
 
         return Db::transaction(function () use ($fromWallet, $toUserId, $amount) {

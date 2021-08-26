@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @namespace
  */
+
 namespace Application\Wallets;
 
 use Bluz\Grid\Source\SelectSource;
@@ -25,7 +27,7 @@ class Grid extends \Bluz\Grid\Grid
      * @return void
      * @throws \Bluz\Grid\GridException
      */
-    public function init() : void
+    public function init(): void
     {
         // Current table as source of grid
         $adapter = new SelectSource();

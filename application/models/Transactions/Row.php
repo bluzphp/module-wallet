@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @namespace
  */
+
 namespace Application\Transactions;
 
 /**
@@ -24,14 +26,14 @@ class Row extends \Bluz\Db\Row
     /**
      * @return void
      */
-    public function beforeInsert() : void
+    public function beforeInsert(): void
     {
     }
 
     /**
      * @return void
      */
-    public function beforeUpdate() : void
+    public function beforeUpdate(): void
     {
     }
 
@@ -42,7 +44,7 @@ class Row extends \Bluz\Db\Row
      * @throws \Bluz\Db\Exception\RelationNotFoundException
      * @throws \Bluz\Db\Exception\TableNotFoundException
      */
-    public function getUser() : ?\Application\Users\Row
+    public function getUser(): ?\Application\Users\Row
     {
         return $this->getRelation('Users');
     }
