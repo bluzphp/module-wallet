@@ -11,7 +11,6 @@ namespace Application;
 
 use Bluz\Controller\Controller;
 use Bluz\Grid\Grid;
-use Bluz\Proxy\Layout;
 
 /**
  * @privilege View
