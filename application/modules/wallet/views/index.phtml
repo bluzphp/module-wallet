@@ -20,7 +20,7 @@ $uid = uniqid('form_', false); ?>
     require_once __DIR__ . '/../../users/views/partial/card-header.phtml' ?>
     <div class="card-body">
         <h4 class="card-title"><?= __('Wallet') ?></h4>
-        <div class="card w-50 center">
+        <div class="card center">
             <div class="card-body">
 
                 <div class="clearfix" data-spy="grid" data-grid="<?= $uid ?>">
@@ -35,12 +35,12 @@ $uid = uniqid('form_', false); ?>
                             <?= __('All') ?>
                         </a>
                         <a href="<?= $grid->filter('type', 'eq', Table::TYPE_DEBIT, false) ?>"
-                           class="ml-2 btn <?= (Table::TYPE_DEBIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
+                           class="ms-2 btn <?= (Table::TYPE_DEBIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
                            data-ajax>
                             <?= __('Debit') ?>
                         </a>
                         <a href="<?= $grid->filter('type', 'eq', Table::TYPE_CREDIT, false) ?>"
-                           class="ml-2 btn <?= (Table::TYPE_CREDIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
+                           class="ms-2 btn <?= (Table::TYPE_CREDIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
                            data-ajax>
                             <?= __('Credit') ?>
                         </a>

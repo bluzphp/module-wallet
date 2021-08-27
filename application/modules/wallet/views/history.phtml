@@ -21,12 +21,12 @@ use \Application\Transactions\Table;
         <?= __('All') ?>
     </a>
     <a href="<?= $grid->filter('type', 'eq', Table::TYPE_DEBIT, false) ?>"
-       class="ml-2 btn <?= (Table::TYPE_DEBIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
+       class="ms-2 btn <?= (Table::TYPE_DEBIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
        data-ajax>
         <?= __('Debit') ?>
     </a>
     <a href="<?= $grid->filter('type', 'eq', Table::TYPE_CREDIT, false) ?>"
-       class="ml-2 btn <?= (Table::TYPE_CREDIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
+       class="ms-2 btn <?= (Table::TYPE_CREDIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
        data-ajax>
         <?= __('Credit') ?>
     </a>
@@ -52,20 +52,10 @@ use \Application\Transactions\Table;
             <?= $row->getAmountString() ?>
         </td>
         <td class="controls align-middle">
-            <?php if ($row['carName']) : ?>
-              <a href="<?= $this->url('cars', 'info', ['id' => $row['carId']]) ?>" class="btn btn-success btn-sm mr-1"
-                 data-ajax-dialog data-ajax-method="get">
-                <i class="fa fa-car"></i>
-              </a> <?= $row['carName'] ?>
-            <?php elseif ($row['chargeName']) : ?>
-              <a href="<?= $this->url('charges', 'info', ['id' => $row['chargeId']]) ?>" class="btn btn-light btn-sm mr-1"
-                 data-ajax-dialog data-ajax-method="get">
-                <i class="fa fa-battery"></i></a>
-                <?= $row['chargeName'] ?>
-            <?php elseif ($row['money']) : ?>
+            <?php if ($row['money']) : ?>
               <a href="<?= $this->url('payments', 'info', ['id' => $row['paymentId']]) ?>" class="btn btn-warning btn-sm mr-1"
                  data-ajax-dialog data-ajax-method="get">
-                <i class="fa fa-dollar"></i></a>
+                  <i class="bi bi-currency-exchange"></i></a>
                 <?= $row['money'] ?> <?= $row['currency'] ?>
             <?php endif; ?>
         </td>
