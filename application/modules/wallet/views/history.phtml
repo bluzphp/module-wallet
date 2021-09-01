@@ -1,7 +1,7 @@
 <?php
-/**
- * @var \Bluz\Grid\Grid $grid
- */
+
+/** @var \Bluz\View\View $this */
+/** @var \Bluz\Grid\Grid $grid */
 if (!$grid) {
     return;
 }
@@ -9,11 +9,12 @@ $uid = $grid->getUid();
 
 use \Application\Transactions\Table;
 ?>
+
+<script type="module">
+  import '<?=$this->baseUrl('/js/bluz.grid.js');?>';
+</script>
+
 <div class="clearfix" data-spy="grid" data-grid="<?= $uid ?>">
-  <script>
-    // use data-spy="grid" for use AJAX for reload grid
-    require(['bluz.grid']);
-  </script>
   <nav class="navbar navbar-light bg-light justify-content-start">
     <a href="<?= $grid->filter('type', 'eq', '', false) ?>"
        class="btn <?= (null === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"

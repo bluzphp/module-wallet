@@ -7,11 +7,12 @@ if (!$grid) {
 }
 $uid = $grid->getUid();
 ?>
+
+<script type="module">
+  import '<?=$this->baseUrl('/js/bluz.grid.js');?>';
+</script>
+
 <div class="clearfix" data-spy="grid" data-grid="<?= $uid ?>">
-  <script>
-    // use data-spy="grid" for use AJAX for reload grid
-    require(['bluz.grid']);
-  </script>
 
   <nav class="navbar navbar-light bg-light justify-content-start">
     <a href="<?= $grid->filter('amount', 'eq', '', true) ?>"
@@ -19,7 +20,7 @@ $uid = $grid->getUid();
         <?= __('All') ?>
     </a>
     <a href="<?= $grid->filter('amount', 'eq', 0, false) ?>"
-       class="ms-2 btn <?= (0 === $grid->getFilter('amount', 'eq') ? 'btn-info' : 'btn-secondary') ?>" data-ajax>
+       class="ms-1 btn <?= (0 === $grid->getFilter('amount', 'eq') ? 'btn-info' : 'btn-secondary') ?>" data-ajax>
         <?= __('Zero') ?>
     </a>
   </nav>
@@ -53,16 +54,14 @@ $uid = $grid->getUid();
         <td class="text-center"><?= $row->amount ?></td>
         <td class="text-center"><?= $row->blocked ?></td>
         <td>
-          <form action="<?= $this->url('wallet', 'send') ?>" class="form" data-ajax method="post">
+          <form action="<?= $this->url('wallet', 'send') ?>" class="form row" data-ajax method="post">
             <input type="hidden" name="id" value="<?=$row->userId?>" />
-            <div class="form-row">
-              <label class="col-4">
+              <label class="col">
                 <input type="number" min="0" max="1000000" name="amount" value="0" class="form-control" />
               </label>
-              <div class="col-4">
+              <div class="col">
                 <button type="submit" class="btn btn-primary"><?=__('Send')?></button>
               </div>
-            </div>
           </form>
         </td>
         <td><?= $row->created ?></td>

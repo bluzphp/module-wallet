@@ -9,11 +9,12 @@ $uid = $grid->getUid();
 
 use \Application\Transactions\Table;
 ?>
+
+<script type="module">
+  import '<?=$this->baseUrl('/js/bluz.grid.js');?>';
+</script>
+
 <div class="clearfix" data-spy="grid" data-grid="<?= $uid ?>">
-  <script>
-    // use data-spy="grid" for use AJAX for reload grid
-    require(['bluz.grid']);
-  </script>
   <nav class="navbar navbar-light bg-light justify-content-start">
       <a href="<?= $grid->filter('type', 'eq', '', false) ?>"
          class="btn <?= (null === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
@@ -21,12 +22,12 @@ use \Application\Transactions\Table;
           <?= __('All') ?>
       </a>
       <a href="<?= $grid->filter('type', 'eq', Table::TYPE_DEBIT, false) ?>"
-         class="ml-2 btn <?= (Table::TYPE_DEBIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
+         class="ms-2 btn <?= (Table::TYPE_DEBIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
          data-ajax>
           <?= __('Debit') ?>
       </a>
       <a href="<?= $grid->filter('type', 'eq', Table::TYPE_CREDIT, false) ?>"
-         class="ml-2 btn <?= (Table::TYPE_CREDIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
+         class="ms-2 btn <?= (Table::TYPE_CREDIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
          data-ajax>
           <?= __('Credit') ?>
       </a>
