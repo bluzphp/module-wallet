@@ -19,7 +19,7 @@ $uid = $grid->getUid();
         <?= __('All') ?>
     </a>
     <a href="<?= $grid->filter('amount', 'eq', 0, false) ?>"
-       class="ml-2 btn <?= (0 === $grid->getFilter('amount', 'eq') ? 'btn-info' : 'btn-secondary') ?>" data-ajax>
+       class="ms-2 btn <?= (0 === $grid->getFilter('amount', 'eq') ? 'btn-info' : 'btn-secondary') ?>" data-ajax>
         <?= __('Zero') ?>
     </a>
   </nav>
@@ -67,12 +67,8 @@ $uid = $grid->getUid();
         </td>
         <td><?= $row->created ?></td>
         <td class="controls d-flex justify-content-around">
-          <a href="<?= $this->url('users', 'profile', ['id' => $user->id]); ?>" class="btn btn-info"
-             data-ajax-dialog data-ajax-method="get" data-modal-style="modal-lg">
-            <i class="fa fa-id-card"></i>
-          </a>
-          <a href="<?=$this->url('wallet', 'transactions', ['transactions-filter-userId' => $user->id])?>" class="btn btn-warning">
-            <i class="fas fa-exchange-alt"></i>
+          <a href="<?=$this->url('wallet', 'transactions', ['transactions-filter-user' => $user->id])?>" class="btn btn-warning">
+              <i class="bi bi-arrow-left-right"></i>
           </a>
         </td>
       </tr>

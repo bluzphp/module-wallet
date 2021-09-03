@@ -9,7 +9,7 @@
 
 namespace Application;
 
-use Application\Wallets\Table;
+use Application\Wallets\Service;
 use Bluz\Controller\Controller;
 use Bluz\Proxy\Messages;
 use Bluz\Proxy\Request;
@@ -30,7 +30,7 @@ return function (int $id, int $amount) {
     /**
      * @var Controller $this
      */
-    if (Table::send($this->user()->id, $id, $amount)) {
+    if (Service::send($this->user()->getId(), $id, $amount)) {
         Messages::addSuccess('%d added to balance', $amount);
         $referer = Request::getHeader('referer') ?? Router::getFullUrl('wallet', 'grid');
         Response::redirect($referer);

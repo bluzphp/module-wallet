@@ -9,7 +9,7 @@
 
 namespace Application;
 
-use Application\Wallets\Table;
+use Application\Wallets\Service;
 use Bluz\Controller\Controller;
 
 /**
@@ -23,7 +23,7 @@ return function (int $id, int $amount) {
     /**
      * @var Controller $this
      */
-    if (!Table::addCredit($id, $amount)) {
+    if (!Service::addCredit($id, $amount)) {
         throw new Exception('System can\'t added credit');
     }
 };

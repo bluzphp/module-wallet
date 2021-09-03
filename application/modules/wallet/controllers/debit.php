@@ -9,7 +9,7 @@
 
 namespace Application;
 
-use Application\Wallets\Table;
+use Application\Wallets\Service;
 use Bluz\Controller\Controller;
 
 /**
@@ -23,7 +23,7 @@ return function (int $id, int $amount) {
     /**
      * @var Controller $this
      */
-    if (!Table::addDebit($id, $amount)) {
+    if (!Service::addDebit($id, $amount)) {
         throw new Exception('System can\'t added debit');
     }
 };

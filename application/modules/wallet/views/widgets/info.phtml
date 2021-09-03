@@ -1,14 +1,6 @@
 <div class="card mb-3 bg-warning">
   <div class="card-header d-flex justify-content-between">
     <h4 class="card-title"><?= __('Wallet') ?></h4>
-    <div>
-      <a href="<?= $this->url('payments', 'index'); ?>" class="btn btn-light">
-        ₴
-      </a>
-      <a href="<?= $this->url('wallet', 'index'); ?>" class="btn btn-light">
-        <i class="fa fa-exchange"></i>
-      </a>
-    </div>
   </div>
   <div class="card-body text-dark">
     <ul class="list-group">
@@ -16,11 +8,15 @@
         <h6 class="mb-1"><?= __('Balance') ?></h6>
         <strong><?= $wallet->amount ?></strong>
       </li>
+      <li class="list-group-item d-flex w-100 justify-content-between">
+        <h6 class="mb-1"><?= __('Blocked') ?></h6>
+        <strong><?= $wallet->blocked ?></strong>
+      </li>
     </ul>
   </div>
   <div class="card-footer text-center">
-    <a href="<?= $this->url('payments', 'index'); ?>" class="btn btn-primary">
-      <?= __('Fill up a balance') ?>
+    <a href="<?= $this->url('wallet', 'history')?>" class="btn btn-primary">
+      <?= __('Transactions history') ?>
     </a>
   </div>
 </div>

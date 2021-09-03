@@ -1,0 +1,72 @@
+<?php
+/**
+ * @var \Bluz\Grid\Grid $grid
+ */
+if (!$grid) {
+    return;
+}
+$uid = $grid->getUid();
+
+use \Application\Transactions\Table;
+?>
+<div class="clearfix" data-spy="grid" data-grid="<?= $uid ?>">
+  <script>
+    // use data-spy="grid" for use AJAX for reload grid
+    require(['bluz.grid']);
+  </script>
+  <nav class="navbar navbar-light bg-light justify-content-start">
+    <a href="<?= $grid->filter('type', 'eq', '', false) ?>"
+       class="btn <?= (null === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
+       data-ajax>
+        <?= __('All') ?>
+    </a>
+    <a href="<?= $grid->filter('type', 'eq', Table::TYPE_DEBIT, false) ?>"
+       class="ms-2 btn <?= (Table::TYPE_DEBIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
+       data-ajax>
+        <?= __('Debit') ?>
+    </a>
+    <a href="<?= $grid->filter('type', 'eq', Table::TYPE_CREDIT, false) ?>"
+       class="ms-2 btn <?= (Table::TYPE_CREDIT === $grid->getFilter('type', 'eq') ? 'btn-info' : 'btn-secondary') ?>"
+       data-ajax>
+        <?= __('Credit') ?>
+    </a>
+  </nav>
+  <hr/>
+
+    <?= $this->partial('grid/total.phtml', ['grid' => $grid]) ?>
+
+  <table class="table table-striped table-hover">
+    <thead>
+    <tr>
+      <th width="80px">#</th>
+      <th width="80px"><a href="<?= $grid->order('amount') ?>"><?= __('Amount') ?></a></th>
+      <th></th>
+      <th width="180px" class="d-none d-lg-table-cell"><a href="<?= $grid->order('created') ?>"><?= __('Created') ?></a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($grid->getData() as $i => $row) : /** @var \Application\Transactions\Row $row */?>
+      <tr>
+        <td class="align-middle"><?= $row->id ?></td>
+        <td class="text-right align-middle">
+            <?= $row->getAmountString() ?>
+        </td>
+        <td class="controls align-middle">
+            <?php if ($row['money']) : ?>
+              <a href="<?= $this->url('payments', 'info', ['id' => $row['paymentId']]) ?>" class="btn btn-warning btn-sm mr-1"
+                 data-ajax-dialog data-ajax-method="get">
+                  <i class="bi bi-currency-exchange"></i></a>
+                <?= $row['money'] ?> <?= $row['currency'] ?>
+            <?php endif; ?>
+        </td>
+        <td class="d-none d-lg-table-cell align-middle"><?= $row->created ?></td>
+      </tr>
+    <?php endforeach; ?>
+    </tbody>
+  </table>
+
+    <?= $this->partial('grid/empty-rows.phtml', ['grid' => $grid]) ?>
+    <?= $this->partial('grid/pagination.phtml', ['grid' => $grid]) ?>
+    <?= $this->partial('grid/total.phtml', ['grid' => $grid]) ?>
+
+</div>
