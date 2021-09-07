@@ -54,7 +54,7 @@ use \Application\Transactions\Table;
         </td>
         <td class="controls align-middle">
             <?php if ($row['money']) : ?>
-              <a href="<?= $this->url('payments', 'info', ['id' => $row['paymentId']]) ?>" class="btn btn-warning btn-sm mr-1"
+              <a href="<?= $this->url('payments', 'info', ['id' => $row['paymentId']]) ?>" class="btn btn-warning btn-sm"
                  data-ajax-dialog data-ajax-method="get">
                   <i class="bi bi-currency-exchange"></i></a>
                 <?= $row['money'] ?> <?= $row['currency'] ?>
